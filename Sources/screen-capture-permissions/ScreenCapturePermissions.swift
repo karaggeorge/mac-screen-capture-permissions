@@ -9,9 +9,7 @@ struct ScreenCapturePermissions {
       pixelFormat: Int32(kCVPixelFormatType_32BGRA),
       properties: nil,
       queue: DispatchQueue.global(),
-      handler: { status, displayTime, frameSurface, updateRef in
-          print("is only called once")
-      })
+      handler: { status, displayTime, frameSurface, updateRef in })
     else {
       return "false";
     }
