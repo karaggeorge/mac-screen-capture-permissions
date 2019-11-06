@@ -47,7 +47,7 @@ const hasPromptedForPermission = () => {
 	return false;
 };
 
-const resetPermissions = ({bundleId = ''}) => {
+const resetPermissions = ({bundleId = ''} = {}) => {
 	try {
 		execa.sync('tccutil', ['reset', 'ScreenCapture', bundleId].filter(Boolean));
 
