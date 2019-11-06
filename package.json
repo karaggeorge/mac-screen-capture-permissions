@@ -1,0 +1,47 @@
+{
+  "name": "mac-screen-capture-permissions",
+  "version": "1.0.0",
+  "description": "Check and request permission to capture the screen",
+  "main": "index.js",
+  "repository": "https://github.com/karaggeorge/mac-screen-capture-permissions",
+  "author": {
+    "name": "George Karagkiaouris",
+    "email": "gkaragkiaouris2@gmail.com",
+    "url": "https://gkaragkiaouris.tech"
+  },
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "start": "electron example.js",
+    "test": "xo",
+    "build": "swift build --configuration=release && mv .build/release/screen-capture-permissions .",
+    "prepublish": "npm run build"
+  },
+  "dependencies": {
+    "electron-util": "^0.12.1",
+    "execa": "^2.0.4",
+    "macos-version": "^5.2.0"
+  },
+  "devDependencies": {
+    "electron": "^7.1.0",
+    "xo": "^0.24.0"
+  },
+  "files": [
+    "index.js",
+    "api.js",
+    "screen-capture-permissions"
+  ],
+  "keywords": [
+    "macos",
+    "swift",
+    "screen",
+    "recording",
+    "permission",
+    "screen recording",
+    "catalina",
+    "electron"
+  ],
+  "engines": {
+    "node": ">=8"
+  }
+}

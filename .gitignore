@@ -1,0 +1,7 @@
+node_modules
+yarn.lock
+/.build
+/*.xcodeproj
+xcuserdata
+project.xcworkspace
+/screen-capture-permissions
