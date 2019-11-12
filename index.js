@@ -29,6 +29,8 @@ const hasScreenCapturePermission = () => {
 				fs.mkdirSync(api.app.getPath('userData'));
 				fs.writeFileSync(filePath, '');
 			}
+
+			throw error;
 		}
 	}
 

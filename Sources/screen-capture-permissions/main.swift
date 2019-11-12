@@ -1,4 +1,4 @@
 import Cocoa
 
-print(ScreenCapturePermissions.checkPermissions())
+print(ScreenCapturePermissions.hasPermissions())
 

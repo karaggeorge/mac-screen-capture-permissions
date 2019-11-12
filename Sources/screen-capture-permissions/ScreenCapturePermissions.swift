@@ -1,7 +1,7 @@
 import Cocoa
 
 struct ScreenCapturePermissions {
-  static func checkPermissions() -> String {
+  static func hasPermissions() -> Bool {
     let stream = CGDisplayStream(
       dispatchQueueDisplay: CGMainDisplayID(),
       outputWidth: 1,
@@ -9,9 +9,9 @@ struct ScreenCapturePermissions {
       pixelFormat: Int32(kCVPixelFormatType_32BGRA),
       properties: nil,
       queue: DispatchQueue.global(),
-      handler: nil
+      handler: { status, displayTime, frameSurface, updateRef in }
     )
 
-    return stream == nil ? "false" : "true"
+    return stream != nil
   }
 }
