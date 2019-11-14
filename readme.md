@@ -68,6 +68,14 @@ Returns `true` if the command executed successfully and `false` otherwise.
 
 Returns `false` on macOS versions older than 10.15 since this permission wasn't present
 
+#### `.openSystemPreferences(): Promise<void>`
+
+Open the System Preferences in the Screen Recording permissions section under the Security pane.
+
+Only available in Electron apps.
+
+Returns a Promise that resolves when the window is opened
+
 ## License
 
 MIT
