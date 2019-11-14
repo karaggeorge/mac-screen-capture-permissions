@@ -2,7 +2,7 @@ const {app} = require('electron');
 const {
 	hasScreenCapturePermission,
 	hasPromptedForPermission,
-	resetPermissions
+	openSystemPreferences
 } = require('.');
 
 (async () => {
@@ -13,6 +13,5 @@ const {
 	console.log('Has permissions?', hasScreenCapturePermission());
 	console.log('Has asked permissions?', hasPromptedForPermission());
 
-	console.log('Reset', resetPermissions());
-	console.log('Has asked permissions?', hasPromptedForPermission());
+	openSystemPreferences();
 })();

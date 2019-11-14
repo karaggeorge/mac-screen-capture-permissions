@@ -13,22 +13,23 @@
   "private": false,
   "scripts": {
     "start": "electron example.js",
-    "test": "xo",
+    "test": "xo && tsd",
     "build": "swift build --configuration=release && mv .build/release/screen-capture-permissions .",
     "prepublish": "npm run build"
   },
   "dependencies": {
-    "electron-util": "^0.12.1",
+    "electron-util": "^0.13.0",
     "execa": "^2.0.4",
     "macos-version": "^5.2.0"
   },
   "devDependencies": {
     "electron": "^7.1.0",
+    "tsd": "^0.11.0",
     "xo": "^0.24.0"
   },
   "files": [
     "index.js",
-    "api.js",
+    "index.d.ts",
     "screen-capture-permissions"
   ],
   "keywords": [
@@ -37,6 +38,9 @@
     "screen",
     "recording",
     "permission",
+    "permissions",
+    "system",
+    "preferences",
     "screen recording",
     "catalina",
     "electron"

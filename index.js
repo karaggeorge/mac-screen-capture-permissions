@@ -2,18 +2,24 @@
 const path = require('path');
 const fs = require('fs');
 const execa = require('execa');
-const electronUtil = require('electron-util/node');
+const {isElectron, fixPathForAsarUnpack} = require('electron-util/node');
 const macosVersion = require('macos-version');
 
-const api = require('./api');
-
-const binary = path.join(electronUtil.fixPathForAsarUnpack(__dirname), 'screen-capture-permissions');
+const binary = path.join(fixPathForAsarUnpack(__dirname), 'screen-capture-permissions');
 
 const permissionExists = macosVersion.isGreaterThanOrEqualTo('10.15');
 
-const filePath = api && path.join(api.app.getPath('userData'), '.has-app-requested-screen-capture-permissions');
+let filePath;
 
-const hasScreenCapturePermission = () => {
+if (isElectron) {
+	const {api, openSystemPreferences} = require('electron-util');
+
+	exports.openSystemPreferences = () => openSystemPreferences('security', 'Privacy_ScreenCapture');
+
+	filePath = api.app && path.join(api.app.getPath('userData'), '.has-app-requested-screen-capture-permissions');
+}
+
+exports.hasScreenCapturePermission = () => {
 	if (!permissionExists) {
 		return true;
 	}
@@ -26,7 +32,7 @@ const hasScreenCapturePermission = () => {
 			fs.writeFileSync(filePath, '');
 		} catch (error) {
 			if (error.code === 'ENOENT') {
-				fs.mkdirSync(api.app.getPath('userData'));
+				fs.mkdirSync(path.dirname(filePath));
 				fs.writeFileSync(filePath, '');
 			}
 
@@ -37,7 +43,7 @@ const hasScreenCapturePermission = () => {
 	return hasPermission;
 };
 
-const hasPromptedForPermission = () => {
+exports.hasPromptedForPermission = () => {
 	if (!permissionExists) {
 		return false;
 	}
@@ -49,7 +55,7 @@ const hasPromptedForPermission = () => {
 	return false;
 };
 
-const resetPermissions = ({bundleId = ''} = {}) => {
+exports.resetPermissions = ({bundleId = ''} = {}) => {
 	try {
 		execa.sync('tccutil', ['reset', 'ScreenCapture', bundleId].filter(Boolean));
 
@@ -61,10 +67,4 @@ const resetPermissions = ({bundleId = ''} = {}) => {
 	} catch (error) {
 		return false;
 	}
-};
-
-module.exports = {
-	hasScreenCapturePermission,
-	hasPromptedForPermission,
-	resetPermissions
 };
