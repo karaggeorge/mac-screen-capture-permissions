@@ -9,7 +9,7 @@ struct ScreenCapturePermissions {
       pixelFormat: Int32(kCVPixelFormatType_32BGRA),
       properties: nil,
       queue: DispatchQueue.global(),
-      handler: { status, displayTime, frameSurface, updateRef in }
+      handler: { _, _, _, _ in }
     )
 
     return stream != nil
