@@ -10,6 +10,8 @@ $ npm install mac-screen-capture-permissions
 
 ## Usage
 
+See [example.js](https://github.com/karaggeorge/mac-screen-capture-permissions/blob/master/example.js) for usage.
+
 ```js
 const {
   hasScreenCapturePermission,
