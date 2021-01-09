@@ -5,3 +5,4 @@ yarn.lock
 xcuserdata
 project.xcworkspace
 /screen-capture-permissions
+/build

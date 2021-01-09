@@ -11,12 +11,15 @@
   },
   "license": "MIT",
   "private": false,
+  "gypfile": true,
   "scripts": {
     "start": "electron example.js",
     "test": "xo && tsd",
-    "build": "swift build --configuration=release && mv .build/release/screen-capture-permissions .",
-    "prepublish": "npm run build"
+    "install": "prebuild-install || node-gyp rebuild"
   },
+  "os": [
+    "darwin"
+  ],
   "dependencies": {
     "electron-util": "^0.13.0",
     "execa": "^2.0.4",
@@ -24,13 +27,13 @@
   },
   "devDependencies": {
     "electron": "^7.1.0",
+    "prebuild": "^10.0.1",
     "tsd": "^0.11.0",
     "xo": "^0.24.0"
   },
   "files": [
     "index.js",
-    "index.d.ts",
-    "screen-capture-permissions"
+    "index.d.ts"
   ],
   "keywords": [
     "macos",

@@ -2,10 +2,9 @@
 const path = require('path');
 const fs = require('fs');
 const execa = require('execa');
-const {isElectron, fixPathForAsarUnpack} = require('electron-util/node');
+const {isElectron} = require('electron-util/node');
 const macosVersion = require('macos-version');
-
-const binary = path.join(fixPathForAsarUnpack(__dirname), 'screen-capture-permissions');
+const screencapturepermission = require('./build/Release/screencapturepermissions');
 
 const permissionExists = macosVersion.isGreaterThanOrEqualTo('10.15');
 
@@ -24,8 +23,7 @@ exports.hasScreenCapturePermission = () => {
 		return true;
 	}
 
-	const {stdout} = execa.sync(binary);
-	const hasPermission = stdout === 'true';
+	const hasPermission = screencapturepermission.hasPermissions();
 
 	if (!hasPermission && filePath) {
 		try {
