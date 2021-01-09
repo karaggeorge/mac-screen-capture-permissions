@@ -31,10 +31,6 @@
     "tsd": "^0.11.0",
     "xo": "^0.24.0"
   },
-  "files": [
-    "index.js",
-    "index.d.ts"
-  ],
   "keywords": [
     "macos",
     "swift",
