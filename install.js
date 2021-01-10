@@ -1,8 +1,8 @@
 const os = require('os');
-var spawn = require('cross-spawn');
+const { spawnSync } = require('child_process');
 
 if (os.platform() === 'darwin') {
-    spawn.sync('npm', ['run', 'native_build'], {
+    spawnSync('npm', ['run', 'native_build'], {
         input: 'darwin detected. Build native module.',
         stdio: 'inherit'
     });
