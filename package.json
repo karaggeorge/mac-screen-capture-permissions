@@ -11,15 +11,12 @@
   },
   "license": "MIT",
   "private": false,
-  "gypfile": true,
   "scripts": {
     "start": "electron example.js",
     "test": "xo && tsd",
-    "install": "prebuild-install || node-gyp rebuild"
+    "native_build": "node-gyp rebuild",
+    "install": "prebuild-install || node install.js"
   },
-  "os": [
-    "darwin"
-  ],
   "dependencies": {
     "electron-util": "^0.13.0",
     "execa": "^2.0.4",
@@ -27,6 +24,7 @@
     "prebuild-install": "^6.0.0"
   },
   "devDependencies": {
+    "cross-spawn": "^7.0.3",
     "electron": "^7.1.0",
     "prebuild": "^10.0.1",
     "tsd": "^0.11.0",

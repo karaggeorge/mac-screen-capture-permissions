@@ -4,8 +4,6 @@ const fs = require('fs');
 const execa = require('execa');
 const {isElectron} = require('electron-util/node');
 const macosVersion = require('macos-version');
-const screencapturepermission = require('./build/Release/screencapturepermissions');
-
 const permissionExists = macosVersion.isGreaterThanOrEqualTo('10.15');
 
 let filePath;
@@ -23,6 +21,7 @@ exports.hasScreenCapturePermission = () => {
 		return true;
 	}
 
+	const screencapturepermission = require('./build/Release/screencapturepermissions');
 	const hasPermission = screencapturepermission.hasPermissions();
 
 	if (!hasPermission && filePath) {
