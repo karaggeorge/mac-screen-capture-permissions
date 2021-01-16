@@ -1,5 +1,5 @@
 {
-	"targets": [
+	 "targets": [
 		{
 			"target_name": "screencapturepermissions",
 			"sources": [

@@ -8,10 +8,17 @@ static napi_value hasPermissions(napi_env env, napi_callback_info info) {
   napi_value ret;
   CGDisplayStreamRef stream_ref;
 
-  stream_ref = CGDisplayStreamCreateWithDispatchQueue(CGMainDisplayID(), 1, 1, 'BGRA', nil, dispatch_get_main_queue(), ^(CGDisplayStreamFrameStatus status,
+  stream_ref = CGDisplayStreamCreateWithDispatchQueue(CGMainDisplayID(),
+                                                      1,
+                                                      1,
+                                                      'BGRA',
+                                                      nil,
+                                                      dispatch_get_main_queue(),
+                                                      ^(CGDisplayStreamFrameStatus status,
                                                           uint64_t time,
                                                           IOSurfaceRef frame,
-                                                          CGDisplayStreamUpdateRef ref){});
+                                                          CGDisplayStreamUpdateRef ref) {}
+                                                      );
 
   hasPermissions = stream_ref != nil;
 
