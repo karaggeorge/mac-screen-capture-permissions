@@ -22,7 +22,7 @@ exports.hasScreenCapturePermission = () => {
 	}
 
 	const screenCapturePermission = require('./build/Release/screencapturepermissions');
-	const hasPermission = screencapturepermission.hasPermissions();
+	const hasPermission = screenCapturePermission.hasPermissions();
 
 	if (!hasPermission && filePath) {
 		try {
