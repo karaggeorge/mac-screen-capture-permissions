@@ -22,8 +22,16 @@ exports.hasScreenCapturePermission = () => {
 		return true;
 	}
 
-	const screenCapturePermission = require('./build/Release/screencapturepermissions');
-	const hasPermission = screenCapturePermission.hasPermissions();
+	let hasPermission;
+
+	if (macosVersion.isGreaterThanOrEqualTo('10.16')) {
+		const screenCapturePermission = require('./build/Release/screencapturepermissions');
+		hasPermission = screenCapturePermission.hasPermissions();
+	} else {
+		// permissionExists already asserts >= 10.15, so we dont need another check here.
+		const screenCapturePermission = require('./build/Release/screencapturepermissionslegacy');
+		hasPermission = screenCapturePermission.hasPermissions();
+	}
 
 	if (!hasPermission && filePath) {
 		try {

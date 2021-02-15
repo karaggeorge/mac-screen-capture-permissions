@@ -6,8 +6,21 @@ static napi_value hasPermissions(napi_env env, napi_callback_info info) {
   bool hasPermissions;
   napi_value hasPermissionsInt32;
   napi_value ret;
+  CGDisplayStreamRef stream_ref;
 
-  hasPermissions = CGPreflightScreenCaptureAccess();
+  stream_ref = CGDisplayStreamCreateWithDispatchQueue(CGMainDisplayID(),
+                                                      1,
+                                                      1,
+                                                      'BGRA',
+                                                      nil,
+                                                      dispatch_get_main_queue(),
+                                                      ^(CGDisplayStreamFrameStatus status,
+                                                          uint64_t time,
+                                                          IOSurfaceRef frame,
+                                                          CGDisplayStreamUpdateRef ref) {}
+                                                      );
+
+  hasPermissions = stream_ref != nil;
 
   status = napi_create_int32(env, hasPermissions, &hasPermissionsInt32);
   assert(status == napi_ok);
