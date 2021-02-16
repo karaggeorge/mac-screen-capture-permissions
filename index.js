@@ -24,7 +24,7 @@ exports.hasScreenCapturePermission = () => {
 
 	let hasPermission;
 
-	if (macosVersion.isGreaterThanOrEqualTo('10.16')) {
+	if (macosVersion.isGreaterThanOrEqualTo('11.0')) {
 		const screenCapturePermission = require('./build/Release/screencapturepermissions');
 		hasPermission = screenCapturePermission.hasPermissions();
 	} else {
