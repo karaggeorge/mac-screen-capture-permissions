@@ -4,6 +4,8 @@
 
 ## Install
 
+Building the module from source requires macOS 11+ SDK, but the resulting module will still run on <10.15, 10.15 and 11+.
+
 ```
 $ npm install mac-screen-capture-permissions
 ```
