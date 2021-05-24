@@ -25,6 +25,7 @@
   },
   "devDependencies": {
     "electron": "^7.1.0",
+    "node-abi": "^2.26.0",
     "prebuild": "^10.0.1",
     "tsd": "^0.11.0",
     "xo": "^0.24.0"
