@@ -51,4 +51,4 @@ openSystemPreferences().then(() => console.log('Opened'));
 
 @returns A Promise that resolves when the window is open
 */
-export const openSystemPreferences: () =>  ReturnType<typeof electronUtilOpenSystemPreferences>;
+export const openSystemPreferences: () => ReturnType<typeof electronUtilOpenSystemPreferences>;
