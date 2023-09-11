@@ -22,7 +22,7 @@ exports.hasScreenCapturePermission = () => {
 		return true;
 	}
 
-	const screenCapturePermission = require('./build/Release/screencapturepermissions');
+	const screenCapturePermission = require('./build/Release/screencapturepermissions.node');
 	const hasPermission = screenCapturePermission.hasPermissions();
 
 	if (!hasPermission && filePath) {
@@ -63,6 +63,7 @@ exports.resetPermissions = ({bundleId = ''} = {}) => {
 
 		return true;
 	} catch (error) {
+		console.log(error);
 		return false;
 	}
 };

@@ -1,6 +1,6 @@
 {
   "name": "mac-screen-capture-permissions",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Check and request permission to capture the screen",
   "main": "index.js",
   "repository": "https://github.com/karaggeorge/mac-screen-capture-permissions",
@@ -15,20 +15,18 @@
     "start": "electron example.js",
     "test": "xo && tsd",
     "native_build": "node-gyp rebuild",
-    "install": "prebuild-install || node install.js"
+    "install": "node install.js"
   },
   "dependencies": {
-    "electron-util": "^0.13.0",
-    "execa": "^2.0.4",
-    "macos-version": "^5.2.1",
-    "prebuild-install": "^6.0.0"
+    "electron-util": "^0.17.2",
+    "execa": "^5.1.1",
+    "macos-version": "^5.2.1"
   },
   "devDependencies": {
-    "electron": "^7.1.0",
-    "node-abi": "^2.26.0",
-    "prebuild": "^10.0.1",
-    "tsd": "^0.11.0",
-    "xo": "^0.24.0"
+    "electron": "^23.2.2",
+    "node-abi": "^3.35.0",
+    "tsd": "^0.28.1",
+    "xo": "^0.54.1"
   },
   "keywords": [
     "macos",
